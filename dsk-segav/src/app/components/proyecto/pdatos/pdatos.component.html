@@ -1,0 +1,93 @@
+<div class="m-3">
+    <form [formGroup]="proyectoForm">
+        <div class="form-group row">
+            <label for="proyectoTipo" class="col-sm-2 col-form-label">Tipo: </label>
+            <div class="col-sm-10">
+                <select formControlName="tipo" id="proyectoTipo" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let tp of tipo_proyecto" [value]="tp.nombre">{{tp.alias}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoLongitude" class="col-sm-2 col-form-label">Longitud: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="longitud" class="form-control" id="proyectoLongitude"
+                    placeholder="Longitud">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoPobla" class="col-sm-2 col-form-label">Población: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="poblacion" class="form-control" id="proyectoPobla"
+                    placeholder="Población">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoAntece" class="col-sm-2 col-form-label">Antecedentes: </label>
+            <div class="col-sm-10">
+                <textarea id="proyectoAntece" formControlName="antecedente" class="form-control" rows="3"
+                    placeholder="Antecedentes"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoObjet" class="col-sm-2 col-form-label">Objetivos y alcance: </label>
+            <div class="col-sm-10">
+                <textarea id="proyectoObjet" formControlName="alcance" class="form-control" rows="3"
+                    placeholder="Objetivos y alcance"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoNombre" class="col-sm-2 col-form-label">Nombre: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="nombre" class="form-control" id="proyectoNombre"
+                    placeholder="Nombre del proyecto">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoCorto" class="col-sm-2 col-form-label">Nombre corto: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="codigo" class="form-control" id="proyectoCorto"
+                    placeholder="Nombre corto del proyecto">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoGerencia" class="col-sm-2 col-form-label">Gerencia regional o departamental: </label>
+            <div class="col-sm-10">
+                <select id="proyectoGerencia" formControlName="tipo_gerencia" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let tg of tipo_gerencia" [value]="tg.nombre">{{tg.alias}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoMoneda" class="col-sm-2 col-form-label">Tipo de moneda: </label>
+            <div class="col-sm-10">
+                <select id="proyectoMoneda" formControlName="tipo_moneda" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let tm of tipo_moneda" [value]="tm.nombre">{{tm.alias}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoTramo" class="col-sm-2 col-form-label">Tramo: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="tramo" class="form-control" id="proyectoTramo" placeholder="Tramo">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoSisin" class="col-sm-2 col-form-label">Código SISIN: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="sisin" class="form-control" id="proyectoSisin"
+                    placeholder="Código SISIN">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="proyectoInicio" class="col-sm-2 col-form-label">Fecha de inicio: </label>
+            <div class="col-sm-10">
+                <input type="text" formControlName="f_inicio" id="proyectoInicio" class="form-control"
+                    placeholder="Fecha de inicio" autocomplete="off" bsDatepicker>
+            </div>
+        </div>
+    </form>
+</div>

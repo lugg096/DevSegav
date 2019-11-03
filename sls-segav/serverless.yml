@@ -1,0 +1,21 @@
+
+service: sl-segav
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: us-east-1
+  stage: dev
+
+functions:
+   login_usuario:
+    handler: handler/avance.avan_usu
+    events:
+      - http:
+          path: avance/usuario/{id}
+          method: get
+          request:
+            parameters:
+              id: true
+          
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>gray_gray_both</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gray_gray_both">
+            <rect id="Rectangle-2" fill="#CECECE" x="0" y="12" width="26" height="2"></rect>
+            <g id="Group" transform="translate(1.000000, 1.000000)">
+                <circle id="Oval" fill="#CDCDCD" cx="12" cy="12" r="12"></circle>
+                <circle id="Oval" stroke="#FFFFFF" stroke-width="2" fill="#CECECE" cx="12" cy="12" r="9"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

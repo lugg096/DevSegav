@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Agregar Financiamiento</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="financiamForm">
+        <div class="form-group row">
+            <label for="fFinanciador" class="col-sm-2 col-form-label">Financiador: </label>
+            <div class="col-sm-10">
+                <select id="fFinanciador" formControlName="financiador" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let f of financiers" [value]="f">{{f}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="fComponente" class="col-sm-2 col-form-label">Componente: </label>
+            <div class="col-sm-10">
+                <select id="fComponente" formControlName="componente" class="form-control">
+                    <option value="">-- Seleccione --</option>
+                    <option *ngFor="let c of componentes" [value]="c">{{c}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="fMonto" class="col-sm-2 col-form-label">Monto: </label>
+            <div class="col-sm-10">
+                <input type="number" formControlName="monto" class="form-control" id="fMonto" placeholder="Monto">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cerrar</button>
+    <button type="button" class="btn btn-primary" (click)="guardar()" [disabled]="financiamForm.invalid">Guardar</button>
+</div>

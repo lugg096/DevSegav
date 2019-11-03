@@ -1,0 +1,6 @@
+<div class="form-group row">
+    <div class="col-sm-12">
+        <input type="text" [(ngModel)]="display" class="form-control text-right" [class.is-invalid]="invalid"
+            [disabled]="state" [placeholder]="placeholder" (focus)="onFocus()" (keyup)="onKeyup()" (blur)="onBlur()">
+    </div>
+</div>

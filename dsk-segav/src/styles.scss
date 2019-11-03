@@ -1,0 +1,52 @@
+@import './assets/plugins/bootstrap/css/bootstrap.min.css';
+@import '~ngx-bootstrap/datepicker/bs-datepicker.scss';
+@import './assets/css/style.css';
+
+.blue {
+    @import './assets/scss/colors/blue.scss';
+}
+
+.default{
+    @import './assets/scss/colors/default.scss';
+}
+
+.green{
+    @import './assets/scss/colors/green.scss';
+}
+
+.megna {
+    @import './assets/scss/colors/megna.scss';
+}
+
+.purple {
+    @import './assets/scss/colors/purple.scss';
+}
+
+.red {
+    @import './assets/scss/colors/red.scss';
+}
+
+.blue-dark {
+    @import './assets/scss/colors/blue-dark.scss';
+}
+
+.default-dark {
+    @import './assets/scss/colors/default-dark.scss';
+}
+
+.green-dark {
+    @import './assets/scss/colors/green-dark.scss';
+}
+
+.megna-dark {
+    @import './assets/scss/colors/megna-dark.scss';
+}
+
+.purple-dark {
+    @import './assets/scss/colors/purple-dark.scss';
+}
+
+.red-dark {
+    @import './assets/scss/colors/red-dark.scss';
+}
+

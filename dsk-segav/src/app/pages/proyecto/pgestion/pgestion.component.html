@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre de proyecto</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let lp of lista_proyectos">
+                        <tr>
+                            <td><a [routerLink]="['/proyecto-formulario']" [queryParams]="{id: lp._id}">{{lp.nombre}}</a></td>
+                            <td>
+                                <div class="d-flex">
+                                    <div class="btn-group" dropdown>
+                                        <button dropdownToggle class="btn btn-warning btn-sm mr-1" tooltip="Configuración">
+                                            <i class="fa fa-cogs"></i>
+                                        </button>
+                                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)">Configurar empresa ejecutora</a></li>
+                                            <ng-container *ngIf="lp.supervisora">
+                                                <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)">Configurar empresa supervisora</a></li>
+                                            </ng-container>
+                                            <ng-container *ngIf="lp.fiscalizadora">
+                                                <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)">Configurar empresa fiscalizadora</a></li>
+                                            </ng-container>
+                                            <ng-container *ngIf="lp.rubrado.length > 0">
+                                                <li class="divider dropdown-divider"></li>
+                                                <li role="menuitem"><a class="dropdown-item" href="javascript:void(0)">Agregar valorización</a></li>
+                                            </ng-container>
+                                        </ul>
+                                    </div>
+                                    <button class="btn btn-success btn-sm mr-1" tooltip="Ejecución financiera">
+                                        <i class="fa fa-money"></i>
+                                    </button>
+                                    <button class="btn btn-default btn-sm mr-1" tooltip="Problemas">
+                                        <i class="fa fa-medkit"></i>
+                                    </button>
+                                    <button class="btn btn-info btn-sm mr-1" tooltip="Reporte">
+                                        <i class="fa fa-print"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm mr-1" tooltip="Eliminar">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+
+                    <tr *ngIf="lista_proyectos.length <= 0 && !loading">
+                        <td colspan="2">No se encontraron registros de proyecto</td>
+                    </tr>
+
+                    <tr *ngIf="loading">
+                        <td class="text-center" colspan="2">
+                            <div class="spinner-grow text-info" style="width: 3rem; height: 3rem;" role="status"></div>
+                            <p class="text-info">Cargando...</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="d-flex justify-content-end mt-3">
+            <pagination [maxSize]="10" [itemsPerPage]="paginate.limit" [totalItems]="paginate.total"
+                [(ngModel)]="paginate.page" previousText="Anterior" nextText="Siguiente"
+                (pageChanged)="pageChanged($event)">
+            </pagination>
+        </div>
+    </div>
+</div>

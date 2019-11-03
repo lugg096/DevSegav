@@ -1,0 +1,125 @@
+<div class="card">
+    <div class="card-body">
+        <alert type="danger" *ngIf="showAlert">
+            <strong>Observado!</strong>
+            {{valorForm.get('observacion').value}}
+        </alert>
+        <form [formGroup]="valorForm">
+            <div class="form-group row" formGroupName="proyecto">
+                <label class="col-sm-2 col-form-label">Proyecto: </label>
+                <div class="col-sm-10">
+                    <input type="text" formControlName="nombre" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row" formGroupName="proyecto">
+                <label class="col-sm-2 col-form-label">Fecha Inicio: </label>
+                <div class="col-sm-10">
+                    <input type="text" formControlName="f_inicio" class="form-control" bsDatepicker>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Valorización al: </label>
+                <div class="col-sm-5">
+                    <select formControlName="mes" class="form-control">
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" formControlName="anio" class="form-control">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Avance de rubros</th>
+                            <th class="text-center">Avance</th>
+                            <th class="text-center">Porcentaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container formArrayName="avances">
+                            <tr *ngFor="let aForm of avances.controls; let i = index;">
+                                <ng-container [formGroupName]="i">
+                                    <td>{{i + 1}}. {{aForm.get('rubro').get('nombre').value}}</td>
+                                    <td>
+                                        <ngx-currency formControlName="monto_avance" [moneda]="moneda"
+                                            placeholder="Monto de avance" [invalid]="isInvalid(aForm)"
+                                            (bEvent)="blurMonto(aForm, $event)">
+                                        </ngx-currency>
+
+                                        <!-- <div class="invalid-feedback">
+                                            <div class="input-group w-100">
+                                                Please provide a valid city.
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-md-6 mb-3">
+                                            <div class="invalid-feedback">
+                                                Please provide a valid city.
+                                            </div>
+                                        </div>
+
+                                        <!-- <div class="input-group w-100">
+                                            
+                                            <div class="invalid-feedback"
+                                                *ngIf="aForm.controls.monto_avance.invalid && aForm.controls.monto_avance.touched">
+                                                <span *ngIf="aForm.controls.monto_avance.errors?.ngxcurrency">
+                                                    <i class="fa fa-times-circle-o"></i> Ingrese un monto
+                                                    <strong>valido.</strong>
+                                                </span>
+                                                <span *ngIf="aForm.controls.monto_avance.errors?.ismayor">
+                                                    <i class="fa fa-times-circle-o"></i>
+                                                    El monto debe ser menor o igual a
+                                                    <strong>{{errMessage(aForm)}}</strong>
+                                                </span>
+                                            </div>
+                                        </div> -->
+                                    </td>
+                                    <td class="text-right">
+                                        {{aForm.get('porcentaje_avance').value | number:'1.2-2':'en-US'}}%
+                                    </td>
+                                </ng-container>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-container *ngIf="firstIntance">
+    <button class="right-side-toggle waves-effect waves-light btn btn-success btn-circle btn-sm mr-6" tooltip="Enviar"
+        (click)="enviar()">
+        <i class="fa fa-paper-plane no-rotate"></i>
+    </button>
+
+    <button class="right-side-toggle waves-effect waves-light btn btn-info btn-circle btn-sm" tooltip="Guardar"
+        (click)="guardar()">
+        <i class="fa fa-save no-rotate"></i>
+    </button>
+</ng-container>
+<ng-container *ngIf="secondIntance">
+    <button class="right-side-toggle waves-effect waves-light btn btn-success btn-circle btn-sm mr-6" tooltip="Aceptar"
+        (click)="aceptar()">
+        <i class="fa fa-check no-rotate"></i>
+    </button>
+
+    <button class="right-side-toggle waves-effect waves-light btn btn-danger btn-circle btn-sm" tooltip="Observar"
+        (click)="observar()">
+        <i class="fa fa-ban no-rotate"></i>
+    </button>
+</ng-container>

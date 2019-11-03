@@ -1,0 +1,70 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group valor-scroll">
+                    <a href="javascript:void(0)" *ngFor="let p of lista_proyectos" (click)="detalle(p._id)"
+                        class="list-group-item list-group-item-action" [ngClass]="{'active': p._id == last_id}">
+                        {{p.nombre}}
+                    </a>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th>Fecha de valorización</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let v of valorizaciones">
+                                <tr>
+                                    <td>
+                                        <ng-container *ngIf="allowAdd">
+                                            <button class="btn btn-info btn-sm" tooltip="Editar valorización"
+                                                show-delay="200" [routerLink]="['/valorizacion-formulario']" [queryParams]="{id:v._id}">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </button>
+                                        </ng-container>
+                                        <ng-container *ngIf="allowCheck(v.estado)">
+                                            <button class="btn btn-success btn-sm" tooltip="Validar valorización"
+                                                show-delay="200" [routerLink]="['/valorizacion-formulario']" [queryParams]="{id:v._id}">
+                                                <i class="fa fa-check" aria-hidden="true"></i>
+                                            </button>
+                                        </ng-container>
+                                    </td>
+                                    <td>{{v.mes + '/' + v.anio}}</td>
+                                    <td>
+                                        <div [innerHTML]="v | ngxestado"></div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+
+                            <tr *ngIf="valorizaciones.length <= 0 && !loading">
+                                <td colspan="3">No se encontraron registros de valorización</td>
+                            </tr>
+
+                            <tr *ngIf="loading">
+                                <td class="text-center" colspan="3">
+                                    <div class="spinner-grow text-info" style="width: 3rem; height: 3rem;"
+                                        role="status"></div>
+                                    <p class="text-info">Cargando...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <pagination [maxSize]="10" [itemsPerPage]="paginate.limit" [totalItems]="paginate.total"
+                        [(ngModel)]="paginate.page" previousText="Anterior" nextText="Siguiente"
+                        (pageChanged)="onPaginate($event)">
+                    </pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
